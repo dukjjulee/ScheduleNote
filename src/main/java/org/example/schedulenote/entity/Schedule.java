@@ -21,12 +21,6 @@ public class Schedule {
     private String password;
     private String content;
 
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
-
     //생성자
     public Schedule(String author, String title, String password, String content ) {
         this.author = author;
