@@ -29,7 +29,6 @@ Response
     "author": "이름",
     "title": "제목",
     "content": "내용",
-    "password": "비밀번호",
     "createdAt": "2025-10-14T00:00:00Z",
     "modifiedAt": "2025-10-14T00:00:00Z"
 }
@@ -52,7 +51,6 @@ Response
         "author": "이름",
         "title": "제목",
         "content": "내용",
-        "password": "비밀번호",
         "createdAt": "2025-10-14T00:00:00Z",
         "modifiedAt": "2025-10-14T00:00:00Z"
     },
@@ -61,7 +59,6 @@ Response
         "author": "이름",
         "title": "제목2",
         "content": "내용2",
-        "password": "비밀번호2",
         "createdAt": "2025-10-14T00:00:00Z",
         "modifiedAt": "2025-10-14T00:00:00Z"
     }
@@ -85,7 +82,6 @@ Respones
     "author": "이름",
     "title": "제목",
     "content": "내용",
-    "password": "비밀번호",
     "createdAt": "2025-10-14T00:00:00Z",
     "modifiedAt": "2025-10-14T00:00:00Z"
 }
@@ -118,7 +114,6 @@ Response
 {
     "auther": "이름",
     "title": "제목",
-    "password": "비밀번호",
     "createdAt": "2025-10-14T00:00:00Z",
     "modifiedAt": "2025-10-14T00:00:00Z"
 }
