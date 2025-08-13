@@ -17,7 +17,7 @@ public class ScheduleResponse {
             Long id,
             String title,
             String author,
-            LocalDateTime createdAt,
+            String scheduleAuthor, LocalDateTime createdAt,
             LocalDateTime modifiedAt
     ) {
         this.id = id;
