@@ -51,6 +51,6 @@ public class ScheduleController {
             @PathVariable long scheduleId,
             @RequestParam String password
     ) {
-      scheduleService.deletSchedule(scheduleId, password);
+      scheduleService.deleteSchedule(scheduleId, password);
     }
 }

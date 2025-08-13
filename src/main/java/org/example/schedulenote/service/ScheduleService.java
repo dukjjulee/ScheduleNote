@@ -12,7 +12,6 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +19,7 @@ public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
 
+    //일정 생성
     @Transactional
     public ScheduleSaveResponse save(ScheduleSaveRequest request) {
         Schedule schedule = new Schedule(
@@ -39,12 +39,15 @@ public class ScheduleService {
         );
     }
 
+    //일정 목록 조회
     @Transactional(readOnly = true)
     public List<ScheduleResponse> findSchedules(String author) {
         List<Schedule> schedules = scheduleRepository.findAll();
         List<ScheduleResponse> dtos = new ArrayList<>();
 
         if (author == null) {
+
+            //전체 일정 반환
             for (Schedule schedule : schedules) {
                 ScheduleResponse scheduleResponse = new ScheduleResponse(
                         schedule.getId(),
@@ -58,6 +61,7 @@ public class ScheduleService {
             }
             return dtos;
         }
+        //author 파라미터 있을 시 해당 작성자의 일정만 반환
         for (Schedule schedule : schedules) {
             if(author.equals(schedule.getAuthor())) {
                 ScheduleResponse scheduleResponse = new ScheduleResponse(
@@ -73,6 +77,8 @@ public class ScheduleService {
         }
         return dtos;
     }
+
+    //일정 단일 조회
     @Transactional(readOnly = true)
     public ScheduleResponse findSchedule(long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
@@ -88,13 +94,17 @@ public class ScheduleService {
         );
     }
 
+    //일정 수정
     @Transactional
     public ScheduleResponse updateSchedule(long scheduleId, ScheduleSaveRequest request) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalArgumentException("Schedule를 찾을 수 없습니다.")
         );
+
+        //수정 요청시 비밀번호 검증
+        //null-safe 비교 사용
         if (ObjectUtils.nullSafeEquals(schedule.getPassword(), request.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 틀렸습니다.");
+            throw new IllegalArgumentException("비밀번호 불일치");
         }
         schedule.updateTitleAndAuThor(request.getTitle(), request.getAuthor());
         return new ScheduleResponse(
@@ -107,13 +117,16 @@ public class ScheduleService {
         );
     }
 
+    //일정 삭제
     @Transactional
-    public void deletSchedule(long scheduleId, String password) {
+    public void deleteSchedule(long scheduleId, String password) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalArgumentException("Schedule를 찾을 수 없습니다.")
         );
+
+        //삭제 요청시 비밀번호 검증
         if (!ObjectUtils.nullSafeEquals(schedule.getPassword(), password)) {
-            throw new IllegalArgumentException("비밀번호가 틀렸습니다.");
+            throw new IllegalArgumentException("비밀번호 불일치");
         }
         scheduleRepository.deleteById(scheduleId);
     }
