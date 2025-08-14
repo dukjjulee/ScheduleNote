@@ -8,4 +8,5 @@ public class UserSaveRequest {
     private Long id;
     private String author;
     private String email;
+    private String password;
 }

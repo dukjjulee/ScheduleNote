@@ -17,14 +17,19 @@ public class User extends Base {
     private Long id;
     private String author;
     private String email;
+    private String password;
 
-    public User(String author, String email) {
+    public User(String author, String email, String password) {
         this.author = author;
         this.email = email;
+        this.password = password;
+
     }
 
-    public void UpdateUserInformation(String author, String email) {
+    public void UpdateUserInformation(String author, String email, String password) {
         this.author = author;
         this.email = email;
+        this.password = password;
+
     }
 }

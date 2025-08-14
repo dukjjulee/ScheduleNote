@@ -8,6 +8,8 @@ import org.example.schedulenote.User.entity.User;
 import org.example.schedulenote.User.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,10 @@ public class UserService {
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new IllegalArgumentException("User을 찾을 수 없습니다.")
         );
+
+        if (!ObjectUtils.nullSafeEquals(user.getPassword(), request.getPassword())) {
+            throw new IllegalArgumentException("비밀번호 불일치");
+
         user.UpdateUserInformation(request.getAuthor(), request.getEmail());
         return new UserResponse(
                 user.getId(),
@@ -86,9 +92,13 @@ public class UserService {
 
     //유저 삭제
     @Transactional
-    public void deleteUser(long userId) {
+    public void deleteUser(long userId, String password) {
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new IllegalArgumentException("User를 찾을 수 없습니다.")
         );
+
+        if (!ObjectUtils.nullSafeEquals(user.getPassword(), password)) {
+            throw new IllegalArgumentException("비밀번호 불일치");
+        }
     }
 }

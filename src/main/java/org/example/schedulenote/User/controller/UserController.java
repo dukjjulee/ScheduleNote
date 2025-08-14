@@ -41,13 +41,14 @@ public class UserController {
             @PathVariable long userId,
             @RequestBody UserSaveRequest request
     ) {
-        return  ResponseEntity.ok(userService.updateUser(userId, request));
+        return ResponseEntity.ok(userService.updateUser(userId, request));
     }
 
     @DeleteMapping("/users/{userId}")
     public void deletUser(
             @PathVariable long userId
+            @RequestParam String password
     ) {
-        userService.deleteUser(userId);
+        userService.deleteUser(userId, password);
     }
 }
