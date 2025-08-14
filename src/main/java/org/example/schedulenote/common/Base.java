@@ -1,4 +1,4 @@
-package org.example.schedulenote.entity;
+package org.example.schedulenote.common;
 
 import jakarta.persistence.*;
 import lombok.Getter;

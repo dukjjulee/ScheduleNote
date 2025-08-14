@@ -1,11 +1,11 @@
-package org.example.schedulenote.dto;
+package org.example.schedulenote.Schedule.dto;
 
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class ScheduleUpdateResponse {
+public class ScheduleSaveResponse {
 
     private final Long id;
     private final String title;
@@ -14,7 +14,7 @@ public class ScheduleUpdateResponse {
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
-    public ScheduleUpdateResponse(
+    public ScheduleSaveResponse (
             Long id,
             String title,
             String content,

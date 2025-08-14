@@ -1,11 +1,11 @@
-package org.example.schedulenote.service;
+package org.example.schedulenote.Schedule.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.schedulenote.dto.ScheduleResponse;
-import org.example.schedulenote.dto.ScheduleSaveRequest;
-import org.example.schedulenote.dto.ScheduleSaveResponse;
-import org.example.schedulenote.entity.Schedule;
-import org.example.schedulenote.repository.ScheduleRepository;
+import org.example.schedulenote.Schedule.dto.ScheduleResponse;
+import org.example.schedulenote.Schedule.dto.ScheduleSaveRequest;
+import org.example.schedulenote.Schedule.dto.ScheduleSaveResponse;
+import org.example.schedulenote.Schedule.entity.Schedule;
+import org.example.schedulenote.Schedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -103,7 +103,7 @@ public class ScheduleService {
 
         //수정 요청시 비밀번호 검증
         //null-safe 비교 사용
-        if (ObjectUtils.nullSafeEquals(schedule.getPassword(), request.getPassword())) {
+        if (!ObjectUtils.nullSafeEquals(schedule.getPassword(), request.getPassword())) {
             throw new IllegalArgumentException("비밀번호 불일치");
         }
         schedule.updateTitleAndAuThor(request.getTitle(), request.getAuthor());

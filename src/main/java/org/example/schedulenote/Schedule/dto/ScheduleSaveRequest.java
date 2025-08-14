@@ -1,4 +1,4 @@
-package org.example.schedulenote.dto;
+package org.example.schedulenote.Schedule.dto;
 
 import lombok.Getter;
 

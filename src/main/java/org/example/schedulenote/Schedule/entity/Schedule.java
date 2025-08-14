@@ -1,14 +1,14 @@
-package org.example.schedulenote.entity;
+package org.example.schedulenote.Schedule.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import org.example.schedulenote.common.Base;
 
 @Getter
 @Entity
 @NoArgsConstructor
-public class Schedule {
+public class Schedule extends Base {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

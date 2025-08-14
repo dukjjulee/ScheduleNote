@@ -1,10 +1,10 @@
-package org.example.schedulenote.controller;
+package org.example.schedulenote.Schedule.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.schedulenote.dto.ScheduleResponse;
-import org.example.schedulenote.dto.ScheduleSaveRequest;
-import org.example.schedulenote.dto.ScheduleSaveResponse;
-import org.example.schedulenote.service.ScheduleService;
+import org.example.schedulenote.Schedule.dto.ScheduleResponse;
+import org.example.schedulenote.Schedule.dto.ScheduleSaveRequest;
+import org.example.schedulenote.Schedule.dto.ScheduleSaveResponse;
+import org.example.schedulenote.Schedule.service.ScheduleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
